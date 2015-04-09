@@ -57,22 +57,12 @@ $('.navbar-collapse ul li a').click(function() {
   }
 
   function createCircles() {
-    var colors = [
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50'],
-        ['#EAE8FF', '#2c3e50']
-      ],
-      percents = [
+    var percents = [
         90, 85, 85, 70,
         40, 30
       ],
       circles = [];
-    for (var i = 1; i <= colors.length; i++) {
+    for (var i = 1; i <= percents.length; i++) {
       var child = document.getElementById('circles-' + i),
         percentage = percents[i - 1],
         circle = Circles.create({
@@ -80,7 +70,7 @@ $('.navbar-collapse ul li a').click(function() {
           value: percentage,
           radius: 30,
           width: 5,
-          colors: colors[i - 1]
+          colors: ['#bfc8d1', '#2c3e50']
         });
       circles.push(circle);
     }
