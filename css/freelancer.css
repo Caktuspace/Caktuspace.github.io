@@ -8,6 +8,26 @@ body {
     overflow-x: hidden;
 }
 
+iframe {
+ margin-top: 30px;
+ margin-bottom: 30px;
+}
+
+#canvas .circle {
+	display: inline-block;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.percentParentDiv {
+    display: inline-block;
+    width: 100%;
+}
+
+.percentDiv {
+    display: inline-block;
+}
+
 p {
     font-size: 20px;
 }
