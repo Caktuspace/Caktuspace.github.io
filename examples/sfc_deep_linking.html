@@ -1,53 +1,70 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Open sfc</title>
-		<style>
-			html, body {
-				margin: 0;
-				width: 100%;
-				height: 100%;
-				overflow: hidden;
-			}
-		</style>
-	</head>
 
-	<body>
-		<script type="text/javascript">
-		    window.onload = function() {
-		        var method = 'iframe';
-		        var fallbackFunction = function() {
-							document.getElementById('myLink').click();
-		            if (method == 'iframe') {
-		                window.location = "market://details?id=com.superfootclub.sfc";
-		            }
-		        };
-		        var addIFrame = function() {
-		            var iframe = document.createElement("iframe");
-		            iframe.style.border = "none";
-		            iframe.style.width = "1px";
-		            iframe.style.height = "1px";
-		            iframe.src = "superfc://";
-		            document.body.appendChild(iframe);
-		        };
-		        var loadChromeIntent = function() {
-		            method = 'intent';
-		            document.location = "intent://#Intent;scheme=superfc;package=com.superfootclub.sfc;end";
-		        };
-		        if (navigator.userAgent.match(/Chrome/) && !navigator.userAgent.match("Version/")) {
-		            loadChromeIntent();
-		        }
-		        else if (navigator.userAgent.match(/Firefox/)) {
-		            window.location = "superfc://";
-		        }
-		        else {
-		            addIFrame();
-		        }
-		        setTimeout(fallbackFunction, 750);
-		    };
-		</script>
-		<a id="myLink" href="intent://#Intent;scheme=superfc;package=com.superfootclub.sfc;end" />
-	</body>
+<head>
+	<meta charset="utf-8" />
+	<title>Open sfc</title>
+	<style>
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var method = 'iframe';
+			var fallbackFunction = function() {
+				clickLink(document.getElementById('myLink'));
+				window.location = "intent://#Intent;scheme=superfc;package=com.superfootclub.sfc;end";
+			};
+			var addIFrame = function() {
+				var iframe = document.createElement("iframe");
+				iframe.style.border = "none";
+				iframe.style.width = "1px";
+				iframe.style.height = "1px";
+				iframe.src = "superfc://";
+				document.body.appendChild(iframe);
+			};
+			var loadChromeIntent = function() {
+				method = 'intent';
+				document.location = "intent://#Intent;scheme=superfc;package=com.superfootclub.sfc;end";
+			};
+			if (navigator.userAgent.match(/Chrome/) && !navigator.userAgent.match("Version/")) {
+				loadChromeIntent();
+			} else if (navigator.userAgent.match(/Firefox/)) {
+				window.location = "superfc://";
+			} else {
+				addIFrame();
+			}
+			setTimeout(fallbackFunction, 750);
+		};
+
+		function clickLink(link) {
+			var cancelled = false;
+
+			if (document.createEvent) {
+				var event = document.createEvent("MouseEvents");
+				event.initMouseEvent("click", true, true, window,
+					0, 0, 0, 0, 0,
+					false, false, false, false,
+					0, null);
+				cancelled = !link.dispatchEvent(event);
+			} else if (link.fireEvent) {
+				cancelled = !link.fireEvent("onclick");
+			}
+
+			if (!cancelled) {
+				window.location = link.href;
+			}
+		}
+	</script>
+	<a id="myLink" href="intent://#Intent;scheme=superfc;package=com.superfootclub.sfc;end" />
+</body>
 
 </html>
