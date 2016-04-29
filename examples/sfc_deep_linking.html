@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Open sfc</title>
+		<style>
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			#container {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container"></div>
+		<script type="text/javascript">
+		    window.onload = function() {
+		        var method = 'iframe';
+		        var fallbackFunction = function() {
+		            if (method == 'iframe') {
+		                window.location = "market://details?id=com.superfootclub.sfc";
+		            }
+		        };
+		        var addIFrame = function() {
+		            var iframe = document.createElement("iframe");
+		            iframe.style.border = "none";
+		            iframe.style.width = "1px";
+		            iframe.style.height = "1px";
+		            iframe.src = "superfc://";
+		            document.body.appendChild(iframe);
+		        };
+		        var loadChromeIntent = function() {
+		            method = 'intent';
+		            document.location = "intent://#Intent;scheme=superfc;package=com.superfootclub.sfc;end";
+		        };
+		        if (navigator.userAgent.match(/Chrome/) && !navigator.userAgent.match("Version/")) {
+		            loadChromeIntent();
+		        }
+		        else if (navigator.userAgent.match(/Firefox/)) {
+		            window.location = "superfc://";
+		        }
+		        else {
+		            addIFrame();
+		        }
+		        setTimeout(fallbackFunction, 750);
+		    };
+		</script>
+	</body>
+
+</html>
