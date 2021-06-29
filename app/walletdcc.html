@@ -18,7 +18,7 @@
 <body>
 	<script type="text/javascript">
 		window.onload = function() {
-			let lastPath = this.href.substring(this.href.lastIndexOf('/') + 1);
+			let lastPath = this.document.URL.substring(this.document.URL.lastIndexOf('/') + 1);
 			window.location = "intent://bonjour.tousanticovid.gouv.fr/app/" + lastPath + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end";
 		};
 	</script>
