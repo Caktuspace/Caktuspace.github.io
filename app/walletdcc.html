@@ -21,6 +21,12 @@
 			let lastPath = this.document.URL.substring(this.document.URL.lastIndexOf('/') + 1);
 			let beforeSharp = lastPath.substring(0, lastPath.lastIndexOf('#') + 1);
 			let afterSharp = lastPath.substring(lastPath.lastIndexOf('#') + 1);
+			let encodedAfterSharp;
+			if (afterSharp.indexOf(":") !== -1) {
+				encodedAfterSharp = encodeURI(afterSharp);
+			} else {
+				encodedAfterSharp = afterSharp;
+			}
 
 			// // Create anchor element.
 			// var a = document.createElement('a');
@@ -36,7 +42,7 @@
 			// document.body.appendChild(a);
 
 
-			window.location = "intent://bonjour.tousanticovid.gouv.fr/app/" + beforeSharp + encodeURIComponent(afterSharp) + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end";
+			window.location = "intent://bonjour.tousanticovid.gouv.fr/app/" + beforeSharp + encodedAfterSharp + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end";
 		};
 	</script>
 <div>
