@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Open tac</title>
+	<style>
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.onload = function() {
+			let lastPath = this.href.substring(this.href.lastIndexOf('/') + 1);
+			window.location = "intent://bonjour.tousanticovid.gouv.fr/app/" + lastPath + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end";
+		};
+	</script>
+</body>
+
+</html>
