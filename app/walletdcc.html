@@ -17,32 +17,9 @@
 
 <body>
 	<script type="text/javascript">
+		<!-- Make deeplink works on Android	-->
 		window.onload = function() {
 			let lastPath = this.document.URL.substring(this.document.URL.lastIndexOf('app/') + 4);
-			// let lastPath = this.document.URL.substring(this.document.URL.lastIndexOf('/') + 1);
-			// let beforeSharp = lastPath.substring(0, lastPath.lastIndexOf('#') + 1);
-			// let afterSharp = lastPath.substring(lastPath.lastIndexOf('#') + 1);
-			// let encodedAfterSharp;
-			// if (afterSharp.indexOf(":") !== -1) {
-			// 	encodedAfterSharp = encodeURI(afterSharp);
-			// } else {
-			// 	encodedAfterSharp = afterSharp;
-			// }
-
-			// // Create anchor element.
-			// var a = document.createElement('a');
-			// // Create the text node for anchor element.
-			// var link = document.createTextNode("intent://bonjour.tousanticovid.gouv.fr/app/" + lastPath + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end");
-			// // Append the text node to anchor element.
-			// a.appendChild(link);
-			// // Set the title.
-			// a.title = "This is Link";
-			// // Set the href property.
-			// a.href = "intent://bonjour.tousanticovid.gouv.fr/app/" + lastPath + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end";
-			// // Append the anchor element to the body.
-			// document.body.appendChild(a);
-
-
 			window.location = "intent://bonjour.tousanticovid.gouv.fr/app/" +  lastPath + "#Intent;scheme=https;package=fr.gouv.android.stopcovid;end";
 		};
 	</script>
